@@ -1,8 +1,8 @@
-console.log("Home JS")
+CreateQuizCardElements((jsonData) => {
+    return `
+        <h1>${jsonData.title}<h1>
+        <h3>${jsonData.description}<h3>
+        <p>Difficulty: ${jsonData.difficulty}</p>
+        <button>Play!</button>`
+})
 
-let quizzes = document.getElementsByTagName('quiz')
-console.log(quizzes);
-
-for(let i = 0; i < quizzes.length; i++){
-   ParseQuizElement(quizzes[i]);
-}

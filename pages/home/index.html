@@ -4,11 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App - Home</title>
+
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            gap: 10px;
+        }
+
+        .shadow{
+            box-shadow: 3px 3px 3px 3px #555555;
+        }
+    </style>
+
 </head>
 <body>
-    <h1>Hello World</h1> 
+    <div class="grid">
+        <quiz-card class="shadow" json="testquiz.json"></quiz-card>
+        <quiz-card class="shadow" json="testquiz2.json"></quiz-card>
+        <quiz-card class="shadow" json="testquiz3.json"></quiz-card>
 
-    <quiz json="testquiz.json" />
+        <quiz-card class="shadow" json="testquiz3.json"></quiz-card>
+        <quiz-card class="shadow" json="testquiz2.json"></quiz-card>
+        <quiz-card class="shadow" json="testquiz.json"></quiz-card>
+    </div>
+
 
     <script src="../../lib/libquizjson.js"></script>
     <script src="./home.js"></script>
