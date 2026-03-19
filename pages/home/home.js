@@ -5,6 +5,8 @@ let filter = urlParams.get("search")
 
 filter = filter ? filter : ""
 
+console.log(window.location)
+
 // Create Quiz Cards
 CreateQuizCardElements(filter, (fileName, jsonBody) => {
     console.log(jsonBody)
