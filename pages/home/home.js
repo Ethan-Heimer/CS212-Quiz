@@ -5,7 +5,7 @@ let filter = urlParams.get("search")
 
 filter = filter ? filter : ""
 
-console.log(window.location.hostname)
+console.log("Host:" + window.location.hostname)
 
 // Create Quiz Cards
 CreateQuizCardElements(filter, (fileName, jsonBody) => {
