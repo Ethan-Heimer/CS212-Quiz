@@ -22,3 +22,34 @@ Assets for the webpage are found at `assets/`. Data for quizzes are found at `as
 
 ## libquizjson
 Documentation on how to use this library can be found [here](https://github.com/Ethan-Heimer/CS212-Quiz/blob/master/lib/libquizjson.js)
+
+## How to add a quiz
+### HTML
+libquizjson defines a custon HTML tag called '<quiz-card>'. This is used to define a quiz card using a corrisponding json file.
+You define the json file a quiz should use using it's `json` property.
+
+Example:
+```html
+<quiz-card json="testquiz.json"></quiz-card>
+```
+
+another example can be found [here](https://github.com/Ethan-Heimer/CS212-Quiz/blob/master/pages/home/index.html)
+
+### JavaScript
+Calling `CreateQuizCardElements` from `libquizjson.js` genertates the html for all 
+`<quiz-card>` elements. It does this by using a callback function that returns what
+the HTML for the `<quiz-card>` should be.
+
+Example
+```JavaScript
+CreateQuizCardElements("", (fileName, jsonBody) => {
+    return `
+        <h1>${jsonBody.title}</h1>
+        <h3>${jsonBody.description}</h3>
+        <p>Difficulty: ${jsonBody.difficulty}</p>
+        <button onclick="RedirectToQuiz('/pages/quiz', '${fileName}')">Take Quiz!</button>`
+})
+```
+
+
+
