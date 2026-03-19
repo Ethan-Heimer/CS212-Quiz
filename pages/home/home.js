@@ -1,7 +1,9 @@
 // Get the search input from the URL
 const url = window.location.search;
 const urlParams = new URLSearchParams(url)
-const filter = urlParams.get("search")
+let filter = urlParams.get("search")
+
+filter = filter ? filter : ""
 
 // Create Quiz Cards
 CreateQuizCardElements(filter, (fileName, jsonBody) => {
