@@ -62,16 +62,11 @@ currenly, the `.json` file for a quiz looks like:
 }
 ```
 
-*IMPORTANT:* The name of the quiz'a JSON file is the title of the quiz! Use '_' in the quizzes data file's name to represent spaces.
-To get the title of the quiz, a 'title' field is *AUTOMATICALLY* added to the quiz's json data when `libquizjson` generates 
-quiz card.
-
 ### Steps to add a new quiz
 1. Create (Or copy) a `.json` file for the quiz.
 2. Edit the `.json` file with the new quiz's data
 3. In the HTML file where you want the quiz's card to be displayed, add the tag: `<quiz-card json="{json file name}"></quiz-card>`
 
-As long as there's a JavaScript file that calls `CreateQuizCardElements`. A Card for the quiz will be created!
 
 
 
