@@ -8,25 +8,42 @@
     <style>
         .grid{
             display: grid;
-            grid-template-columns: 30% 30% 30%;
+            grid-template-columns: 32% 32% 32%;
             gap: 10px;
         }
 
         .shadow{
             box-shadow: 3px 3px 3px 3px #555555;
         }
+
+        @media screen and (max-width: 600px){
+            .grid{
+                grid-template-columns: 49% 49%;
+            }
+        }
+
+        @media screen and (max-width: 300px){
+            .grid{
+                grid-template-columns: 100%;
+            }
+        }
     </style>
 
 </head>
 <body>
-    <div class="grid">
-        <quiz-card class="shadow" json="testquiz.json"></quiz-card>
-        <quiz-card class="shadow" json="testquiz2.json"></quiz-card>
-        <quiz-card class="shadow" json="testquiz3.json"></quiz-card>
+    <form>
+        <label for="search">Search</label>
+        <input type="text" name="search" id="search">
+    </form>
 
-        <quiz-card class="shadow" json="testquiz3.json"></quiz-card>
-        <quiz-card class="shadow" json="testquiz2.json"></quiz-card>
-        <quiz-card class="shadow" json="testquiz.json"></quiz-card>
+    <div class="grid">
+        <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
+        <quiz-card class="shadow" json="test_quiz_2.json"></quiz-card>
+        <quiz-card class="shadow" json="test_quiz_3.json"></quiz-card>
+
+        <quiz-card class="shadow" json="test_quiz_3.json"></quiz-card>
+        <quiz-card class="shadow" json="test_quiz_2.json"></quiz-card>
+        <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
     </div>
 
 
