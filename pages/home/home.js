@@ -5,6 +5,8 @@ const filter = urlParams.get("search")
 
 // Create Quiz Cards
 CreateQuizCardElements(filter, (fileName, jsonBody) => {
+    console.log(jsonBody)
+
     return `
         <h1>${jsonBody.title}</h1>
         <h3>${jsonBody.description}</h3>
