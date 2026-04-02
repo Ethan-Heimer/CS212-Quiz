@@ -73,6 +73,21 @@ quiz card.
 
 As long as there's a JavaScript file that calls `CreateQuizCardElements`. A Card for the quiz will be created!
 
+## Important HTML IDs
+| Id          | Description                                 |
+|-------------|---------------------------------------------|
+| `quiz-list` | The parent container for quiz card elements |
+
+## Special CSS Selectors
+### Quiz Cards
+
+| Selector                    | Description                                              |
+|-----------------------------|----------------------------------------------------------|
+| `.quiz-card`                | Styles the outer, container element for the quiz cards.  |
+| `.quiz-card > #title`       | Styles the title for quiz card elements.                 |
+| `.quiz-card > #description` | Styles the description for quiz card elements.           |
+| `.quiz-card > #difficulty`  | Styles the difficulty section for quiz card elements.    |
+| `.quiz-card > button`       | Styles the 'take quiz' button for quiz card elements.    |
 
 
 

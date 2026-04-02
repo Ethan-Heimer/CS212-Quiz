@@ -1,57 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App - Home</title>
+    <meta charset="UTF-8"> <!-- Allows us to use accents, emojis, and special characters in our text-->
+    <!-- icon load-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Uniquiz — An Intuitive Quiz App</title>
 
-    <style>
-        .grid{
-            display: grid;
-            grid-template-columns: 32% 32% 32%;
-            gap: 10px;
-        }
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-        .shadow{
-            box-shadow: 3px 3px 3px 3px #555555;
-        }
-
-        @media screen and (max-width: 600px){
-            .grid{
-                grid-template-columns: 49% 49%;
-            }
-        }
-
-        @media screen and (max-width: 300px){
-            .grid{
-                grid-template-columns: 100%;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <form>
-        <label for="search">Search</label>
-        <input type="text" name="search" id="search">
-    </form>
+    <!--Navigation bar built off css-->
+    <nav class= "navbar navbar-expand-lg navbar-dark shadow-sm custom-navbar">
+        <div class= "container">
+            <a class="navbar-brand fw-bold" href="#">Uniquiz</a>
+        </div>
+    </nav>
+    <!--Desc-->
+    <header class="hero-section text-white text-center py-5">
+        <div class="container">
+            <h1 class="text-center mb-4">
+                <i class="bi bi-patch-question-fill me-2 hero-icon"></i>
+                UniQuiz
+            </h1>
+            <p class="lead mb-0">
+                An intuitive quiz app designed to help you learn, practice, and track your progress.
+            </p>
+        </div>
+    </header>
 
-    <div class="grid">
-        <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
-        <quiz-card class="shadow" json="test_quiz_2.json"></quiz-card>
-        <quiz-card class="shadow" json="test_quiz_3.json"></quiz-card>
+    <!--Quiz search and list of available quizes-->
+    <section id="quiz-selection" class="container my-4">
 
-        <quiz-card class="shadow" json="test_quiz_3.json"></quiz-card>
-        <quiz-card class="shadow" json="test_quiz_2.json"></quiz-card>
-        <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
+        <h2>Find a Quiz</h2>
+        <p>Search by title or category to get started.</p>
 
-        <quiz-card class="shadow" json="a_quiz_about_cats.json"></quiz-card>
-        <quiz-card class="shadow" json="a_quiz_about_dogs.json"></quiz-card>
-        <quiz-card class="shadow" json="javascript_quiz.json"></quiz-card>
-    </div>
+        <form>
+        <!-- search bar -->
+            <input 
+                id="quiz-search" 
+                name="search"
+                type="text" 
+                class="form-control mb-3"
+                placeholder="Search quizzes..."
+            >
+        </form>
+        <!-- Browse all quizzes -->
+        <h3 class="h4 fw-semibold mb-3">Browse All Quizzes</h3>
+        <div id="browse-quizzes" class="row g-3">
+        <!-- JS will insert quiz cards here -->
+        </div>
 
+        <!-- Quiz list that will be finished in JS-->
+         <div id="quiz-list" class="d-flex flex-column gap-2">
+            <!-- JS quiz buttons here-->
+            <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
+            <quiz-card class="shadow" json="test_quiz_2.json"></quiz-card>
+            <quiz-card class="shadow" json="test_quiz_3.json"></quiz-card>
+
+            <quiz-card class="shadow" json="test_quiz_3.json"></quiz-card>
+            <quiz-card class="shadow" json="test_quiz_2.json"></quiz-card>
+            <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
+
+            <quiz-card class="shadow" json="a_quiz_about_cats.json"></quiz-card>
+            <quiz-card class="shadow" json="a_quiz_about_dogs.json"></quiz-card>
+            <quiz-card class="shadow" json="javascript_quiz.json"></quiz-card>
+         </div>
+
+    </section>  
+
+    <!--Where a quiz is taken. Hidden until selected-->
+    <section id="quiz-container" class="container my-4" style="display: none;">
+
+        <!-- Timer -->
+        <div id="timer" class="mb-3">
+            Time Left: <span id="time-remaining">00:00</span>
+        </div>
+
+        <!-- Questions -->
+        <div id="question-text" class="mb-3">
+            <!--  JS will insert questions -->
+        </div>
+
+        <!-- Answer options -->
+        <form id="options-form" class="mb-3">
+            <!-- JS inserts buttons or checkboxes -->
+        </form>
+
+        <!-- Answer feedback -->
+        <div id="feedback" class="mb-3">
+            <!-- JS shows correct/incorrect -->
+        </div>
+
+        <!-- Next question button-->
+        <button id="next-question-btn" class="btn btn-primary" style="display: none;">
+            Next Question
+        </button>
+
+    </section>
+
+
+    <!--Score summary area-->
+    <section id="score-summary" class="container my-4" style="display: none;">
+
+        <h2>Your Results</h2>
+
+        <!-- Final score -->
+        <p id="final-score"></p>
+
+        <!-- Correct answers -->
+        <div id="correct-answers" class="my-3">
+            <!-- JS lists correct answers here -->
+        </div>
+
+         <!-- Past scores (localStorage) -->
+        <div id="past-scores" class="my-4">
+            <h3>Past Scores</h3>
+            <ul id="score-history">
+                <!-- JS fills this with saved scores -->
+            </ul>
+        </div>
+
+        <!-- More buttons -->
+        <button id="retake-quiz-btn" class="btn btn-primary me-2">Retake Quiz</button>
+        <button id="new-quiz-btn" class="btn btn-outline-primary">Choose Another Quiz</button>
+
+    </section>
+
+    <!-- footer-->
+     <footer class="text-center p-3 mt-4">
+        <p>Uniquiz — CS212 Group Project</p>
+    </footer>
 
     <script src="../../lib/libquizjson.js"></script>
-    <script src="./home.js"></script>
+    <script src="home.js"></script>
+
 </body>
-</html>

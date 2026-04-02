@@ -1,0 +1,105 @@
+
+/* Body color */
+body {
+    background-color: #f8fafc;
+    color: #111827;
+    font-family: Arial, sans-serif;
+}
+/* nav bar background */
+.custom-navbar {
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+/* desc section */
+.hero-section {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #06b6d4);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+/* form control */
+.form-control:focus {
+    border-color: purple;
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.2);
+}
+
+/* btn stuff */
+.btn-primary {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.btn-primary:hover {
+    background-color: #4338ca;
+    border-color: #4338ca;
+}
+
+.btn-outline-primary {
+    color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+/* future time color scheme, look later */
+.timer-pill {
+    background-color: white;
+    color: #4338ca;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+/* question box color */
+.question-box {
+    background-color: #f8fafc;
+    border-left: 5px solid #06b6d4;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+}
+/* future correct vs incorrect */
+.correct-feedback {
+    color: #15803d;
+}
+
+.incorrect-feedback {
+    color: #b91c1c;
+}
+
+/* Selectors for quiz cards */
+.quiz-card > #title{ 
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #06b6d4);
+    color: white; 
+    padding: 1rem
+}
+
+.quiz-card > #description{
+    padding: 1rem;
+}
+
+.quiz-card > #difficulty{
+    padding: 1rem;
+}
+
+.quiz-card > button{
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #06b6d4);
+    color: white; 
+    margin: 1rem;
+    padding: .5rem;
+    border: none;
+    transition: .1s;
+    
+}
+
+.quiz-card > button:hover{
+    background: linear-gradient(75deg, #4f46e5, #7c3aed, #06b6d4);
+    scale: 1.1;
+}
+
+/* for footer */
+footer {
+    color: #4338ca;
+    font-weight: 500;
+}
