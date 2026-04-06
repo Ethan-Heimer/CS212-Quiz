@@ -83,6 +83,10 @@ body {
     padding: 1rem;
 }
 
+.quiz-card > #catagory{
+    padding: 1rem;
+}
+
 .quiz-card > button{
     background: linear-gradient(135deg, #4f46e5, #7c3aed, #06b6d4);
     color: white; 

@@ -17,13 +17,16 @@ function OnPageLoaded(){
 
 function CardElement(fileName, jsonBody){
     // return html for a quiz card
+    const catagoryPreText = "Catagory:"
+    const difficultyPreText = "Difficulty:"
     const quizButtonText = "Take Quiz!"
 
     return `
         <div class="quiz-card">
             <h1 id="title">${jsonBody.title}</h1>
             <h3 id="description">${jsonBody.description}</h3>
-            <p id="difficulty">Difficulty: ${jsonBody.difficulty}</p>
+            <p id="difficulty">${difficultyPreText} ${jsonBody.difficulty}</p>
+            <p id="catagory">${catagoryPreText} ${jsonBody.catagory}</p>
             <button onclick="RedirectToQuiz('/pages/quiz', '${fileName}')">${quizButtonText}</button>
         </div>`
 }

@@ -1,4 +1,41 @@
 {
-    "description": "This is the first example of a quiz",
-    "difficulty": "⭐️⭐️⭐️"
+    "header":{
+        "title": "Example Quiz",
+        "description": "This is the first example of a quiz",
+        "difficulty": 3,
+        "catagory": "Test"
+    },
+
+    "questions":[
+        {
+            "Q":"This is the first test question, the correct answer should be A.",
+            "A":[
+                "They say this is the correct answer.",
+                "But maybe they are lying?",
+                "Who knows, this could be the correct answer.",
+                "Or you might have to trust the question."
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q":"This is the second test question, the correct answer could be B.",
+            "A":[
+                "Try This One!",
+                "Or This one!",
+                "Me?",
+                "Right Here!"
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q": "This is the third test question. I wont give out the correct answer.",
+            "A": [
+                "I tell the truth, I am the correct answer.",
+                "A lies, I am not the correct answer.",
+                "B tells the truth and so do I, I am the correct answer",
+                "I just work here."
+            ],
+            "CorrectIndex": 2
+        }
+    ]
 }
