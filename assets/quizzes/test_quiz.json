@@ -8,7 +8,7 @@
 
     "questions":[
         {
-            "Q":"This is the first test question, the correct answer should be A.",
+            "Q":"This is the first test question. The 'CorrectIndex' field is the index of the correct answer in the array 'A'. So the answer is A.",
             "A":[
                 "They say this is the correct answer.",
                 "But maybe they are lying?",
