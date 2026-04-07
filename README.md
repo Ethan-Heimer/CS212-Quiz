@@ -89,5 +89,11 @@ As long as there's a JavaScript file that calls `CreateQuizCardElements`. A Card
 | `.quiz-card > #difficulty`  | Styles the difficulty section for quiz card elements.    |
 | `.quiz-card > button`       | Styles the 'take quiz' button for quiz card elements.    |
 
+### Quiz answers
+
+| Selector    | Description                                              |
+|-------------|----------------------------------------------------------|
+| `.selected` | Styles to apply to a answer when a button is selected    |
+
 
 

@@ -1,58 +1,53 @@
-// [questionIndex][answerIndex]
-let answerMatrix = [];
+let answerArray = [];
+let score = 0
 
 // -- Functions for displaying quiz data to HTML -- //
 function CreatePage(jsonData){
-    const title = document.getElementById("title");
-    title.innerText = `Taking ${jsonData['header'].title}`;
-
-    const questions = document.getElementById('questions');
+    const questionsContainer = document.getElementById('questions');
     const questionData = jsonData['questions']
+    const questionIndex = GetQuestionID();
 
-    for(let i = 0; i < questionData.length; i++){
-        let answerData = CreateQuestion(questions, questionData[i], i)
-        answerMatrix.push(answerData); 
+    const encodedScore = GetScoreParam();
+    score = DecodeScore(encodedScore);
+
+    if(IsAtEndOfQuiz(questionData, questionIndex)){
+        ShowSummary(score);
     }
 
-    const submitButton = document.createElement('button')
-    submitButton.addEventListener('click', () => {
-        let score = GradeQuiz(questionData, answerMatrix)
+    InitQuizTitle(jsonData['header'].title);
+    InitSubmitButton(questionData, questionIndex);
+    InitNextButton(questionIndex)
 
-        document.getElementById("score").innerText = `You Scored: ${score}/${questionData.length}!`
-    })
-    submitButton.innerText = "Submit!"
-
-    questions.appendChild(submitButton)
+    answerArray = CreateQuestion(questionData, questionIndex);
 }
 
-function CreateQuestion(parent, questionData, index){
+
+function CreateQuestion(questionData, index){
+    const question = questionData[index];
+
     let answerArray=[];
 
-    const questionContainer = document.createElement('div');
+    const questionText = document.getElementById('question-text')
+    const answerContainer = document.getElementById('answer-container')
 
-    const questionText = document.createElement('h3');
-    questionText.innerText = questionData.Q;
-
-    const answerContainer = document.createElement('div');
+    questionText.innerText = question.Q
 
     //create answers
-    for(var i = 0; i < questionData.A.length; i++){
-        const answerText = questionData.A[i]
-
+    for(var i = 0; i < question.A.length; i++){
+        const answerText = question.A[i]
         const answerButton = document.createElement('button')
 
         const answerIndex = i;
 
         answerButton.innerText = answerText;
         answerButton.addEventListener('click', () => {
-            let selected = ToggleAnswer(answerMatrix, index, answerIndex)
+            let selected = ToggleAnswer(answerArray, answerIndex)
+
             if(selected){
-                answerButton.classList.remove('deselected')
                 answerButton.classList.add('selected')
             }
             else{
                 answerButton.classList.remove('selected')
-                answerButton.classList.add('deselected')
             }
         })
 
@@ -60,39 +55,131 @@ function CreateQuestion(parent, questionData, index){
         answerArray.push(false)
     }
 
-    questionContainer.appendChild(questionText);
-    questionContainer.appendChild(answerContainer);
-
-    parent.appendChild(questionContainer); 
-
     return answerArray;
 }
 
-// -- functions for interpreting answer data for quizs and grading -- //
-function SelectAnswer(quizAnswers, questionIndex, answerIndex){
-    quizAnswers[questionIndex][answerIndex] = true;
+function InitSubmitButton(questionData, questionIndex){
+    const submitButton = document.getElementById('submit-answer-btn')
+    submitButton.addEventListener('click', () => {
+        OnAnswerSubmit(questionData, questionIndex)
+    })
 }
 
-function DeselectAnswer(quizAnswers, questionIndex, answerIndex){
-    quizAnswers[questionIndex][answerIndex] = false;
+function InitNextButton(questionIndex){
+    document.getElementById("next-question-btn").addEventListener('click', () => {
+       GotoQuestion(questionIndex+1, score) 
+    })
 }
 
-function ToggleAnswer(quizAnswers, questionIndex, answerIndex){
-    quizAnswers[questionIndex][answerIndex] = !quizAnswers[questionIndex][answerIndex];
-
-    return quizAnswers[questionIndex][answerIndex];
+function InitQuizTitle(title){
+    const titleElement = document.getElementById("quiz-title");
+    titleElement.innerText = `Taking ${title}`;
 }
 
-function GradeQuiz(questionData, answerData){
-    let score = 0;
-    for(let i = 0; i < questionData.length; i++){
-        const correctAnswerIndex = questionData[i].CorrectIndex;
+// -- quiz answering and taking functions --
+function ToggleAnswer(answerArray, index){
+    let value = answerArray[index]
+    answerArray[index] = !value
 
-        if(answerMatrix[i][correctAnswerIndex] == true)
-            score ++;
+    return !value;
+}
+
+function OnAnswerSubmit(questionData, questionIndex){
+    let correct = GradeAnswer(questionData, answerArray, questionIndex)
+    if(correct)
+        score++;
+    
+    document.getElementById("feedback").innerText = `${correct ? "You Got it Right!" : "You got it wrong."}` 
+
+    document.getElementById("submit-answer-btn").style.display = "none";
+    document.getElementById("next-question-btn").style.display = "block";
+}
+
+function GradeAnswer(questionData, answerData, index){
+    const correctAnswerIndex = questionData[index].CorrectIndex;
+
+    for(let i = 0; i < answerData.length; i++){
+        if(i == correctAnswerIndex){
+            if(answerData[i] != true)
+                return false
+        }else{
+            if(answerData[i] != false)
+                return false
+        }
     }
 
-    return score;
+    return true;
+}
+
+// -- functions for getting and setting question ids --
+function GetQuestionID(){
+    const params = new URLSearchParams(window.location.search);
+    const question = params.get('question');
+
+    if(!question)
+        return 0;
+
+    return Number(question);
+}
+
+// -- redirect functions --
+function RestartQuiz(){
+    GotoQuestion(0, 0)
+}
+
+function GotoQuestion(questionIndex, rawScore){
+    // change the windows location to the 'location' string + index.html + quiz data file name
+    const params = new URLSearchParams(window.location.search);
+    const currentQuiz = params.get('quizdata');
+
+    let encodedScore = EncodeScore(rawScore);
+
+    let isGitHub = window.location.hostname.includes("github");
+    window.location.href =`${isGitHub ? "/CS212-Quiz" : ""}/pages/quiz/index.html?quizdata=${currentQuiz}&question=${questionIndex}&score=${encodedScore}`
+}
+
+function GotoHome(){
+    let isGitHub = window.location.hostname.includes("github");
+    window.location.href =`${isGitHub ? "/CS212-Quiz" : ""}/pages/home/`
+}
+
+// -- Score Functions
+function GetScoreParam(){
+    const params = new URLSearchParams(window.location.search);
+    const paramScore = params.get('score');
+
+    if(!paramScore)
+        return 0;
+
+    return Number(paramScore);
+}
+
+function EncodeScore(score){
+    return (score * 3307 * 7919);
+}
+
+function DecodeScore(encodedScore){
+    return encodedScore / (3307 * 7919)
+}
+
+// -- Summary Functions --
+
+function IsAtEndOfQuiz(questionData, questionIndex){
+    return questionIndex >= questionData.length;
+}
+
+function ShowSummary(score){
+    document.getElementById("score-summary").style.display = "block";
+    document.getElementById("quiz-container").style.display = "none"
+
+    document.getElementById('final-score').innerText = `Final Score: ${score}` 
+    document.getElementById('retake-quiz-btn').addEventListener('click', () => {
+        RestartQuiz();
+    })
+
+    document.getElementById('another-quiz-button').addEventListener('click', () => {
+        GotoHome();
+    })
 }
 
 GetJsonFromURL().then((json)=>{
