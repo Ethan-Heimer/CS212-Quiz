@@ -1,6 +1,8 @@
 let answerArray = [];
 let score = 0
 
+let answered = false;
+
 // -- Functions for displaying quiz data to HTML -- //
 function CreatePage(jsonData){
     const questionsContainer = document.getElementById('questions');
@@ -44,6 +46,9 @@ function CreateQuestion(questionData, index){
 
         answerButton.innerText = answerText;
         answerButton.addEventListener('click', () => {
+            if(answered)
+                return;
+
             let selected = ToggleAnswer(answerArray, answerIndex)
 
             if(selected){
@@ -55,6 +60,7 @@ function CreateQuestion(questionData, index){
         })
 
         answerContainer.appendChild(answerButton);
+        
         answerArray.push(false)
     }
 
@@ -88,7 +94,11 @@ function ToggleAnswer(answerArray, index){
 }
 
 function OnAnswerSubmit(questionData, questionIndex){
+    answered = true;
+
     let correct = GradeAnswer(questionData, answerArray, questionIndex)
+    SetButtonCorrectState(questionData, answerArray, questionIndex)
+
     if(correct)
         score++;
     
@@ -117,6 +127,26 @@ function GradeAnswer(questionData, answerData, index){
     }
 
     return true;
+}
+
+function SetButtonCorrectState(questionData, answerData, index){
+    const answerContainer = document.getElementById('answer-container')
+    const answerButtons = [...answerContainer.children]
+
+    let correctAnswerIndexs = questionData[index].CorrectIndex;
+    const hasMultipleAnswers = correctAnswerIndexs.length != null
+
+    //convert correntAnswerIndexs into an array
+    if(!hasMultipleAnswers)
+        correctAnswerIndexs = [correctAnswerIndexs];
+
+    for(let i = 0; i < answerData.length; i++){
+        if(correctAnswerIndexs.includes(i)){
+            answerButtons[i].classList.add("correct")
+        }else{
+            answerButtons[i].classList.add("incorrect")
+        }
+    }
 }
 
 // -- functions for getting and setting question ids --
