@@ -1,0 +1,61 @@
+{
+    "header":{
+        "title": "JavaScript Quiz",
+        "description": "Test Your JavaScript Skills!",
+        "difficulty": "2",
+        "catagory": "Programming"
+    },
+
+    "questions":[
+        {
+            "Q":"Which of the following declares a variable?",
+            "A":[
+                "float number = 3.0f;",
+                "let value: number = 0.99",
+                "number = 0.9",
+                "let number = 1.8"
+            ],
+            "CorrectIndex": 3
+        },
+        {
+            "Q":"`var` can be used to declare a variable.",
+            "A":[
+                "true",
+                "false"
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q":"What is the output of the following: typeof(45)?",
+            "A":[
+                "\"integer\"",
+                "\"unsigned int\"",
+                "\"number\"",
+                "\"float\""
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q":"What is the purpose of the === operator?",
+            "A":[
+                "That is not a real operator.",
+                "It returns true if 2 values are the same value and type.",
+                "It returns true if 2 values are the same. Ignores type.",
+                "It returns true id 3 values are the same."
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q":"What type of language is JavasScript? Select all that apply.",
+            "A":[
+                "JavaScript is a high-level language.",
+                "JavaScript is a low-level language.",
+                "Javascript is a compiled language.",
+                "Javascript is a interpreted language.",
+                "Javascript is a type-safe language.",
+                "Javascript is a dynamicaly typed language."
+            ],
+            "CorrectIndex": [0, 3, 5]
+        }
+    ]
+}

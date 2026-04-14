@@ -8,7 +8,9 @@ function CreatePage(jsonData){
     const questionIndex = GetQuestionID();
 
     const encodedScore = GetScoreParam();
-    score = DecodeScore(encodedScore);
+
+    if(encodedScore)
+        score = DecodeScore(encodedScore);
 
     if(IsAtEndOfQuiz(questionData, questionIndex)){
         ShowSummary(score);
@@ -19,6 +21,7 @@ function CreatePage(jsonData){
     InitNextButton(questionIndex)
 
     answerArray = CreateQuestion(questionData, questionIndex);
+
 }
 
 
@@ -96,10 +99,15 @@ function OnAnswerSubmit(questionData, questionIndex){
 }
 
 function GradeAnswer(questionData, answerData, index){
-    const correctAnswerIndex = questionData[index].CorrectIndex;
+    let correctAnswerIndexs = questionData[index].CorrectIndex;
+    const hasMultipleAnswers = correctAnswerIndexs.length != null
+
+    //convert correntAnswerIndexs into an array
+    if(!hasMultipleAnswers)
+        correctAnswerIndexs = [correctAnswerIndexs];
 
     for(let i = 0; i < answerData.length; i++){
-        if(i == correctAnswerIndex){
+        if(correctAnswerIndexs.includes(i)){
             if(answerData[i] != true)
                 return false
         }else{
@@ -149,17 +157,61 @@ function GetScoreParam(){
     const paramScore = params.get('score');
 
     if(!paramScore)
-        return 0;
+        return null;
 
-    return Number(paramScore);
+    console.log(paramScore)
+    return paramScore;
 }
 
 function EncodeScore(score){
-    return (score * 3307 * 7919);
+    let primeScore = (score * 3307 * 7919);
+    let primeScoreAsString = String(primeScore);
+
+    let asciiKey = Math.floor((Math.random() * 48) + 16);
+
+    let hashedString = [];
+    let hashedAsciiKey = [];
+
+    // hash score
+    for(let i = 0; i < primeScoreAsString.length; i++){
+        hashedString.push(String.fromCharCode(primeScoreAsString.charCodeAt(i) + asciiKey))
+    }
+
+    hashedString.push('-')
+
+    // hash key
+    asciiKey = asciiKey * 5417 
+    let asciiKeyAsString = String(asciiKey);
+    for(let i = 0; i < asciiKeyAsString.length; i++){
+        hashedString.push(String.fromCharCode(asciiKeyAsString.charCodeAt(i) + 16))
+    }
+
+    return hashedString.join("")
 }
 
 function DecodeScore(encodedScore){
-    return encodedScore / (3307 * 7919)
+    //get shift key
+    let tokens = encodedScore.split('-');
+
+    let scoreToken = tokens[0];
+    let keyToken = tokens[1]
+
+    let unhashedKey = []
+    for(let i = 0; i < keyToken.length; i++){ 
+        unhashedKey.push(String.fromCharCode(keyToken.charCodeAt(i) - 16))
+    }
+
+    let key = Number(unhashedKey.join("")) / 5417;
+    
+    //shift ascii back
+    let unhashedString = [];
+    for(let i = 0; i < scoreToken.length; i++){
+        unhashedString.push(String.fromCharCode(scoreToken.charCodeAt(i) - key))
+    }
+
+    let primeScore = Number(unhashedString.join(""))
+
+    return primeScore / (3307 * 7919)
 }
 
 // -- Summary Functions --

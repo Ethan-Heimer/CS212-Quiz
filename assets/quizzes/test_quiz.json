@@ -2,7 +2,7 @@
     "header":{
         "title": "Example Quiz",
         "description": "This is the first example of a quiz",
-        "difficulty": 3,
+        "difficulty": "3",
         "catagory": "Test"
     },
 
@@ -36,6 +36,16 @@
                 "I just work here."
             ],
             "CorrectIndex": 2
+        },
+        {
+            "Q": "Questions can have multiple answers. Try submitting answer D and B",
+            "A": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "CorrectIndex": [1, 3]
         }
     ]
 }

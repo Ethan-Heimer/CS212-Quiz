@@ -59,67 +59,10 @@
          <div id="quiz-list" class="d-flex flex-column gap-2">
             <!-- JS quiz buttons here-->
             <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
+            <quiz-card class="shadow" json="javascript_quiz.json"></quiz-card>
          </div>
 
     </section>  
-
-    <!--Where a quiz is taken. Hidden until selected-->
-    <section id="quiz-container" class="container my-4" style="display: none;">
-
-        <!-- Timer -->
-        <div id="timer" class="mb-3">
-            Time Left: <span id="time-remaining">00:00</span>
-        </div>
-
-        <!-- Questions -->
-        <div id="question-text" class="mb-3">
-            <!--  JS will insert questions -->
-        </div>
-
-        <!-- Answer options -->
-        <form id="options-form" class="mb-3">
-            <!-- JS inserts buttons or checkboxes -->
-        </form>
-
-        <!-- Answer feedback -->
-        <div id="feedback" class="mb-3">
-            <!-- JS shows correct/incorrect -->
-        </div>
-
-        <!-- Next question button-->
-        <button id="next-question-btn" class="btn btn-primary" style="display: none;">
-            Next Question
-        </button>
-
-    </section>
-
-
-    <!--Score summary area-->
-    <section id="score-summary" class="container my-4" style="display: none;">
-
-        <h2>Your Results</h2>
-
-        <!-- Final score -->
-        <p id="final-score"></p>
-
-        <!-- Correct answers -->
-        <div id="correct-answers" class="my-3">
-            <!-- JS lists correct answers here -->
-        </div>
-
-         <!-- Past scores (localStorage) -->
-        <div id="past-scores" class="my-4">
-            <h3>Past Scores</h3>
-            <ul id="score-history">
-                <!-- JS fills this with saved scores -->
-            </ul>
-        </div>
-
-        <!-- More buttons -->
-        <button id="retake-quiz-btn" class="btn btn-primary me-2">Retake Quiz</button>
-        <button id="new-quiz-btn" class="btn btn-outline-primary">Choose Another Quiz</button>
-
-    </section>
 
     <!-- footer-->
      <footer class="text-center p-3 mt-4">
