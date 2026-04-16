@@ -16,13 +16,14 @@ function CreatePage(jsonData){
 
     if(IsAtEndOfQuiz(questionData, questionIndex)){
         let quizName = jsonData['header'].title;
-        ShowSummary(quizName, score);
 
         //avoid adding the score again if the page is reloaded
         const navigationEntries = window.performance.getEntriesByType('navigation');
         if (!(navigationEntries.length > 0 && navigationEntries[0].type === 'reload')) {
             AppendScore(quizName, score, questionData.length)
         }
+
+        ShowSummary(quizName, score);
     }
 
     InitQuizTitle(jsonData['header'].title);
