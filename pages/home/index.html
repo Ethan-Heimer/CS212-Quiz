@@ -32,15 +32,39 @@
             </p>
         </div>
     </header>
+ 
+    <section id="past-scores", class="container my-4">
+        <h2>Past Scores</h2>
+
+        <table id="past-scores-header" class="shadow">
+            <thead id="past-scores-table-header">
+                <th>Quiz Name</th>
+                <th>Score</th>
+                <th>Percent</th>
+            </thead>
+        </table>
+
+        <div id="past-scores-scroll-container" class="shadow">
+            <table id="past-scores-table">
+                <tbody id="past-scores-table-body">
+                </tbody>
+            </table>
+        </div>
+    </section>
 
     <!--Quiz search and list of available quizes-->
     <section id="quiz-selection" class="container my-4">
-
         <h2>Find a Quiz</h2>
         <p>Search by title or category to get started.</p>
 
-        <form>
-        <!-- search bar -->
+        <form id="search-form">
+            <!-- search dropdown --->
+            <select name="options" id="search-options" class="form-control">
+                <option value="title">Title</option>
+                <option value="catagory">Catagory</option>
+                <option value="difficulty">Difficulty</option>
+            </select>
+            <!-- search bar -->
             <input 
                 id="quiz-search" 
                 name="search"
@@ -70,6 +94,7 @@
     </footer>
 
     <script src="../../lib/libquizjson.js"></script>
+    <script src="../../lib/libscore.js"></script>
     <script src="home.js"></script>
 
 </body>

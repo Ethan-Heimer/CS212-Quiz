@@ -15,7 +15,14 @@ function CreatePage(jsonData){
         score = DecodeScore(encodedScore);
 
     if(IsAtEndOfQuiz(questionData, questionIndex)){
-        ShowSummary(score);
+        let quizName = jsonData['header'].title;
+        ShowSummary(quizName, score);
+
+        //avoid adding the score again if the page is reloaded
+        const navigationEntries = window.performance.getEntriesByType('navigation');
+        if (!(navigationEntries.length > 0 && navigationEntries[0].type === 'reload')) {
+            AppendScore(quizName, score, questionData.length)
+        }
     }
 
     InitQuizTitle(jsonData['header'].title);
@@ -181,76 +188,13 @@ function GotoHome(){
     window.location.href =`${isGitHub ? "/CS212-Quiz" : ""}/pages/home/`
 }
 
-// -- Score Functions
-function GetScoreParam(){
-    const params = new URLSearchParams(window.location.search);
-    const paramScore = params.get('score');
-
-    if(!paramScore)
-        return null;
-
-    console.log(paramScore)
-    return paramScore;
-}
-
-function EncodeScore(score){
-    let primeScore = (score * 3307 * 7919);
-    let primeScoreAsString = String(primeScore);
-
-    let asciiKey = Math.floor((Math.random() * 48) + 16);
-
-    let hashedString = [];
-    let hashedAsciiKey = [];
-
-    // hash score
-    for(let i = 0; i < primeScoreAsString.length; i++){
-        hashedString.push(String.fromCharCode(primeScoreAsString.charCodeAt(i) + asciiKey))
-    }
-
-    hashedString.push('-')
-
-    // hash key
-    asciiKey = asciiKey * 5417 
-    let asciiKeyAsString = String(asciiKey);
-    for(let i = 0; i < asciiKeyAsString.length; i++){
-        hashedString.push(String.fromCharCode(asciiKeyAsString.charCodeAt(i) + 16))
-    }
-
-    return hashedString.join("")
-}
-
-function DecodeScore(encodedScore){
-    //get shift key
-    let tokens = encodedScore.split('-');
-
-    let scoreToken = tokens[0];
-    let keyToken = tokens[1]
-
-    let unhashedKey = []
-    for(let i = 0; i < keyToken.length; i++){ 
-        unhashedKey.push(String.fromCharCode(keyToken.charCodeAt(i) - 16))
-    }
-
-    let key = Number(unhashedKey.join("")) / 5417;
-    
-    //shift ascii back
-    let unhashedString = [];
-    for(let i = 0; i < scoreToken.length; i++){
-        unhashedString.push(String.fromCharCode(scoreToken.charCodeAt(i) - key))
-    }
-
-    let primeScore = Number(unhashedString.join(""))
-
-    return primeScore / (3307 * 7919)
-}
-
 // -- Summary Functions --
 
 function IsAtEndOfQuiz(questionData, questionIndex){
     return questionIndex >= questionData.length;
 }
 
-function ShowSummary(score){
+function ShowSummary(quizName, score){
     document.getElementById("score-summary").style.display = "block";
     document.getElementById("quiz-container").style.display = "none"
 
@@ -262,6 +206,24 @@ function ShowSummary(score){
     document.getElementById('another-quiz-button').addEventListener('click', () => {
         GotoHome();
     })
+
+    let pastScoreParent = document.getElementById("past-scores-table-body");
+    ForEachPastScore(quizName, (name, score, maxScore) => {
+        PastScoreElement(pastScoreParent, name, score, maxScore)
+    })
+}
+
+function PastScoreElement(parent, name, score, maxScore){
+    let rowTemplate = `
+        <td>${name}</td>
+        <td>${score}/${maxScore}</td>
+        <td>${Math.floor((score/maxScore)*100)}%</td>
+    `
+
+    let row = document.createElement('tr');
+    row.innerHTML = rowTemplate;
+
+    parent.appendChild(row)
 }
 
 GetJsonFromURL().then((json)=>{

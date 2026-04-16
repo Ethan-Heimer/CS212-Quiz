@@ -63,19 +63,34 @@
     <!-- score summary -->
     <section id="score-summary" class="container my-4" style="display: none;">
 
-        <h2>your results</h2>
+        <h2>Your results!</h2>
 
-        <p id="final-score"></p>
+        <h5 id="final-score"></h5>
 
         <div id="correct-answers" class="my-3"></div>
 
+        <h2>Past scores!</h2>
         <div id="past-scores" class="my-4">
-            <h3>past scores</h3>
-            <ul id="score-history"></ul>
+            <section id="past-scores", class="container my-4">
+                <table id="past-scores-header" class="shadow">
+                    <thead id="past-scores-table-header">
+                        <th>Quiz Name</th>
+                        <th>Score</th>
+                        <th>Percent</th>
+                    </thead>
+                </table>
+
+                <div id="past-scores-scroll-container" class="shadow">
+                    <table id="past-scores-table">
+                        <tbody id="past-scores-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
 
-        <button id="retake-quiz-btn" class="btn btn-primary me-2">retake quiz</button>
-        <button id="another-quiz-button" class="btn btn-outline-primary">choose another quiz</button>
+        <button id="retake-quiz-btn" class="btn btn-primary me-2">Retake quiz</button>
+        <button id="another-quiz-button" class="btn btn-outline-primary">Choose another quiz</button>
 
     </section>
 
@@ -84,5 +99,7 @@
     </footer>
 
     <script src="../../lib/libquizjson.js"></script>
+    <script src="../../lib/libscore.js"></script>
+
     <script src="quiz.js"></script>
 </body>

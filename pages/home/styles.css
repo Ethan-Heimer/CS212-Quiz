@@ -21,6 +21,17 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.2);
 }
 
+#search-form{
+    display: flex;
+    align-items: baseline;
+}
+
+#search-form select {
+    width: fit-content;
+    margin-right: .5rem;
+    text-align: center;
+}
+
 /* btn stuff */
 .btn-primary {
     background-color: #4f46e5;
@@ -42,23 +53,6 @@ body {
     border-color: #4f46e5;
 }
 
-/* future time color scheme, look later */
-.timer-pill {
-    background-color: white;
-    color: #4338ca;
-    padding: 0.6rem 1rem;
-    border-radius: 999px;
-    font-weight: 600;
-}
-
-/* question box color */
-.question-box {
-    background-color: #f8fafc;
-    border-left: 5px solid #06b6d4;
-    padding: 1rem;
-    border-radius: 0.75rem;
-    font-size: 1.1rem;
-}
 /* future correct vs incorrect */
 .correct-feedback {
     color: #15803d;
@@ -101,6 +95,50 @@ body {
     background: linear-gradient(75deg, #4f46e5, #7c3aed, #06b6d4);
     scale: 1.1;
 }
+
+/* past scores */
+table{
+   width: 100%;
+}
+
+#past-scores-table > tbody > tr > td{
+    border: 1px solid #00000077;
+    background-color: white;
+}
+
+#past-scores-table > tbody > tr:nth-child(2n) > td{
+    background-color: #f1f1f1;
+}
+
+#past-scores-table-header{
+    background: linear-gradient(75deg, #4f46e5, #7c3aed, #06b6d4);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+#past-scores-table-header th:nth-child(1){
+    width: 200px;
+}
+
+#past-scores-table-header th {
+    padding: 1rem;
+}
+
+#past-scores-table-body td {
+    padding: .5rem;
+}
+
+#past-scores-table-body td:nth-child(1){
+    width: 200px;
+}
+
+#past-scores-scroll-container{
+    max-height: 20vh;
+    height: fit-content;
+    overflow: auto;
+}
+
 
 /* for footer */
 footer {

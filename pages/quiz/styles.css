@@ -211,7 +211,45 @@ footer {
     margin-top: 0.5rem;
 }
 
-/* score history */
-#score-history li {
-    margin-bottom: 0.4rem;
+/* past scores */
+table{
+   width: 100%;
+}
+
+#past-scores-table > tbody > tr > td{
+    border: 1px solid #00000077;
+    background-color: white;
+}
+
+#past-scores-table > tbody > tr:nth-child(2n) > td{
+    background-color: #f1f1f1;
+}
+
+#past-scores-table-header{
+    background: linear-gradient(75deg, #4f46e5, #7c3aed, #06b6d4);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+#past-scores-table-header th:nth-child(1){
+    width: 200px;
+}
+
+#past-scores-table-header th {
+    padding: 1rem;
+}
+
+#past-scores-table-body td {
+    padding: .5rem;
+}
+
+#past-scores-table-body td:nth-child(1){
+    width: 200px;
+}
+
+#past-scores-scroll-container{
+    max-height: 20vh;
+    height: fit-content;
+    overflow: auto;
 }
