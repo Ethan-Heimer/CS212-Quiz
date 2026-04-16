@@ -117,21 +117,16 @@ table{
     text-align: left;
 }
 
-#past-scores-table-header th:nth-child(1){
-    width: 200px;
-}
-
 #past-scores-table-header th {
     padding: 1rem;
+    width: 33%;
 }
 
 #past-scores-table-body td {
     padding: .5rem;
+    width: 33%;
 }
 
-#past-scores-table-body td:nth-child(1){
-    width: 200px;
-}
 
 #past-scores-scroll-container{
     max-height: 20vh;
