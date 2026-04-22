@@ -1,0 +1,105 @@
+{
+    "header":{
+        "title": "C++ Quiz",
+        "description": "How well do you know C++?",
+        "difficulty": "4",
+        "category": "Programming"
+    },
+
+    "questions":[
+        {
+            "Q":"C++ is a multi paradigm language",
+            "A":[
+                "True",
+                "False"
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q":"C++ is a succsessor to C",
+            "A":[
+                "True",
+                "False"
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q":"Of the following, what the type name of a dynamic array in the C++ standard library?",
+            "A":[
+                "std::Array",
+                "std::Queue",
+                "std::Vector",
+                "std::DynamicArray"
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q":"What is a difference between 'std::list' and 'std::vector'",
+            "A":[
+                "std::vector is less optimized for tight memory spaces as opposed to std::list",
+                "std::list is not a real type defined in the c++ standard.",
+                "std::list is a fixed sized array, where as std::vector is dynamic",
+                "std::vector is implemented as a dynamic array, where as std::list is a doubly linked list."
+
+            ],
+            "CorrectIndex": 3
+        },
+        {
+            "Q":"Pre c++23, what was a common way to print to stdout, without importing a C standard header?",
+            "A":[
+                "printf(\"Hello World!\");",
+                "std::cout << \"Hello world!\" << std::endl;",
+                "std::println(\"Hello World!\")",
+                "print(\"Hello World!\")"
+            ],
+            "CorrectIndex": 1
+        },  
+        {
+            "Q":"You've defined a class named 'Animal' in a seprate header file named 'animal.h', Which of the following is the proper syntax to define the Animal class's constructor in s seperate source file?",
+            "A":[
+                "Animal(){std::cout << \"This is an Animal!\" << std::endl;}",
+                "Animal::Animal(){std::cout << \"This is an Animal!\" << std::endl;}",
+                "Animal::__constructor(){std::cout << \"This is an Animal!\" << std::endl;}",
+                "Define(Animal)(){std::cout << \"This is an Animal!\" << std::endl;}"
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q":"What is the proper syntax to define a temple class named 'MyTemplate'?",
+            "A":[
+                "public class MyTemplate<T>{...}",
+                "class template<typename T> MyTemplate{...}",
+                "template<typename T> class MyTemplate{...}",
+                "class template<MyTemplate, T>{...}"
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q":"What is the proper syntax to define a parameter pack?",
+            "A":[
+                "void function(std::ParameterPack<T, U, V> pack){...}",
+                "void function(params string{} names)",
+                "template<typename Args...> void function(args...){...}"
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q":"When is a smart pointer deallocated?",
+            "A":[
+                "When the object that owns the smart pointer is deallocated, or when the scope when the smart pointer was stack allocated on was exited.",
+                "Always when the program is terminated.",
+                "A Smart pointer determines when to deallocate itself based off the current state of the program.",
+                "The C++ garbage collector deallocates smart pointers."
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q":"'delete' and 'new' replace C's stdlib.h functions 'malloc' and 'free'",
+            "A":[
+                "True",
+                "False"
+            ],
+            "CorrectIndex": 0
+        }
+    ]
+}

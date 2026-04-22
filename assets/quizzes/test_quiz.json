@@ -3,7 +3,7 @@
         "title": "Example Quiz",
         "description": "This is the first example of a quiz",
         "difficulty": "3",
-        "catagory": "Test"
+        "category": "Test"
     },
 
     "questions":[
@@ -35,7 +35,8 @@
                 "B tells the truth and so do I, I am the correct answer",
                 "I just work here."
             ],
-            "CorrectIndex": 2
+            "CorrectIndex": 2,
+            "ScoreWeight": 5
         },
         {
             "Q": "Questions can have multiple answers. Try submitting answer D and B",

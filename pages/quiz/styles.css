@@ -234,14 +234,20 @@ table{
 
 #past-scores-table-header th {
     padding: 1rem;
-    width: 33%;
+    width: 25%;
 }
 
 #past-scores-table-body td {
     padding: .5rem;
-    width: 33%;
+    width: 25%;
 }
 
+#past-scores-table > tbody > tr > td#no-scores-message{
+    border: none;
+    color: gray;
+    text-align: center;
+    font-style: italic;
+}
 
 #past-scores-scroll-container{
     max-height: 20vh;

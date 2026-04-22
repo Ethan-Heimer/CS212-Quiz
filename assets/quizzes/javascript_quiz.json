@@ -2,8 +2,8 @@
     "header":{
         "title": "JavaScript Quiz",
         "description": "Test Your JavaScript Skills!",
-        "difficulty": "2",
-        "catagory": "Programming"
+        "difficulty": "1",
+        "category": "Programming"
     },
 
     "questions":[

@@ -41,6 +41,7 @@
                 <th>Quiz Name</th>
                 <th>Score</th>
                 <th>Percent</th>
+                <th>Time to Finish</th>
             </thead>
         </table>
 
@@ -50,6 +51,10 @@
                 </tbody>
             </table>
         </div>
+
+        <button id="history-clear-button">
+            Clear Score History!
+        </button>
     </section>
 
     <!--Quiz search and list of available quizes-->
@@ -61,7 +66,7 @@
             <!-- search dropdown --->
             <select name="options" id="search-options" class="form-control">
                 <option value="title">Title</option>
-                <option value="catagory">Catagory</option>
+                <option value="category">Category</option>
                 <option value="difficulty">Difficulty</option>
             </select>
             <!-- search bar -->
@@ -84,6 +89,7 @@
             <!-- JS quiz buttons here-->
             <quiz-card class="shadow" json="test_quiz.json"></quiz-card>
             <quiz-card class="shadow" json="javascript_quiz.json"></quiz-card>
+            <quiz-card class="shadow" json="CPlusPlus_quiz.json"></quiz-card>
          </div>
 
     </section>  

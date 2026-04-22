@@ -81,6 +81,10 @@ body {
     padding: 1rem;
 }
 
+.quiz-card > #number-questions{
+    padding: 1rem;
+}
+
 .quiz-card > button{
     background: linear-gradient(135deg, #4f46e5, #7c3aed, #06b6d4);
     color: white; 
@@ -119,12 +123,12 @@ table{
 
 #past-scores-table-header th {
     padding: 1rem;
-    width: 33%;
+    width: 25%;
 }
 
 #past-scores-table-body td {
     padding: .5rem;
-    width: 33%;
+    width: 25%;
 }
 
 
@@ -132,6 +136,28 @@ table{
     max-height: 20vh;
     height: fit-content;
     overflow: auto;
+}
+
+#past-scores-table > tbody > tr > td#no-scores-message{
+    border: none;
+    color: gray;
+    text-align: center;
+    font-style: italic;
+}
+
+#history-clear-button{
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #06b6d4);
+    color: white; 
+    margin: 1rem;
+    padding: .5rem;
+    border: none;
+    transition: .1s;
+    
+}
+
+#history-clear-button:hover{
+    background: linear-gradient(75deg, #4f46e5, #7c3aed, #06b6d4);
+    scale: 1.1;
 }
 
 
