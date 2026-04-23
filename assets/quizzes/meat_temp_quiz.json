@@ -1,0 +1,61 @@
+{
+    "header":{
+        "title": "Meat Temperature",
+        "description": "Do you know the correct temperatures to cook meat?",
+        "difficulty": "2",
+        "category": "Culinary"
+    },
+
+    "questions":[
+        {
+            "Q":"At what temperature is ground beef considered safe to eat?",
+            "A":[
+                "155 degrees F",
+                "165 degrees F",
+                "145 degrees F",
+                "130 degrees F"
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q":"What is the recommended minimum internal temperature for whole cuts of beef, pork, or lamb?",
+            "A":[
+                "120 degrees F",
+                "160 degrees F",
+                "130 degrees F",
+                "145 degrees F"
+            ],
+            "CorrectIndex": 3
+        },
+        {
+            "Q": "What is the safe minimal internal temperature for cooked chicken?",
+            "A": [
+                "145 degrees F",
+                "155 degrees F",
+                "175 degrees F",
+                "165 degrees F"
+            ],
+            "CorrectIndex": 3
+        },
+        {
+            "Q": "What temperature should fish reach to be considered safely cooked?",
+            "A": [
+                "135 degrees F",
+                "125 degrees F",
+                "145 degrees F",
+                "160 degrees F"
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q": "What meat requires the highest minimum internal cooking temperature?",
+            "A": [
+                "Chicken",
+                "Pork chops",
+                "Beef steak",
+                "Fish"
+            ],
+            "CorrectIndex": 0
+        }
+    ]
+}

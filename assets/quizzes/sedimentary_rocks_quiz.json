@@ -1,0 +1,51 @@
+{
+    "header":{
+        "title": "Sedimentary Rocks",
+        "description": "Test your knowledge on sedimentary rocks!",
+        "difficulty": "2",
+        "category": "Geology"
+    },
+
+    "questions":[
+        {
+            "Q":"What process turns loose sediment into solid sedimentary rock?",
+            "A":[
+                "Metamorphism",
+                "Melting",
+                "Lithification",
+                "Evaporation"
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q":"Which of the following is a clastic sedimentary rock?",
+            "A":[
+                "Basalt",
+                "Sandston",
+                "Marble",
+                "Limestone"
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q": "What type of sedimentary rock forms from the remains of living organisms?",
+            "A": [
+                "Biochemical",
+                "Igneous",
+                "Clastic",
+                "Chemical"
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q": "What environment is most likely to produce sedimentary rocks?",
+            "A": [
+                "High-pressure metamorphic zones",
+                "Rivers, oceans, and deserts",
+                "Volcanic lava flows",
+                "Deep underground magma chambers"
+            ],
+            "CorrectIndex": 1
+        }
+    ]
+}

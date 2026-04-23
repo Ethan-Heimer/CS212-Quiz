@@ -1,0 +1,61 @@
+{
+    "header":{
+        "title": "Emulsifiers",
+        "description": "Can you answer questions about emulsifiers?",
+        "difficulty": "3",
+        "category": "Culinary"
+    },
+
+    "questions":[
+        {
+            "Q":"What is the main purpose of an emulsifier?",
+            "A":[
+                "To thicken sauces",
+                "To help mix ingredients that normally separate",
+                "To increase the cooking temperature",
+                "To make food sweeter"
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q":"Which of the following is a common natural emulsifier?",
+            "A":[
+                "Flour",
+                "Sugar",
+                "Egg yolk",
+                "Salt"
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q": "Which classic sauce relies on emulsification?",
+            "A": [
+                "Hollandaise",
+                "Salsa",
+                "Soy Sauce",
+                "Tomato Sauce"
+            ],
+            "CorrectIndex": 0
+        },
+        {
+            "Q": "What happens when an emulsion breaks?",
+            "A": [
+                "The sauce becomes sweeter",
+                "The oil and water separate",
+                "It freezes",
+                "The sauce becomes spicy"
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q": "What ingredient can help fix a broken emulsion?",
+            "A": [
+                "A small amount of mustard",
+                "Cold Water",
+                "More oil",
+                "Sugar"
+            ],
+            "CorrectIndex": 0
+        }
+    ]
+}

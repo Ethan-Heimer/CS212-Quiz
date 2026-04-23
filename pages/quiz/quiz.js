@@ -1,7 +1,6 @@
 let answerArray = [];
 let score = 0
 let time = 0
-
 let answered = false;
 
 // -- Functions for displaying quiz data to HTML -- //
@@ -12,6 +11,8 @@ function CreatePage(jsonData){
 
     const encodedScore = GetScoreParam();
     const encodedTime = GetTime();
+
+    pastAnswerBitMask = null;
 
     if(encodedScore)
         score = DecodeScore(encodedScore);
@@ -120,8 +121,10 @@ function OnAnswerSubmit(questionData, questionIndex){
     SetButtonCorrectState(questionData, answerArray, questionIndex)
 
     score += gradedScore;
+
+    let correct = gradedScore == GetAnswerWeight(questionData[questionIndex]);
     
-    document.getElementById("feedback").innerText = `${gradedScore == GetAnswerWeight(questionData[questionIndex]) ? `You Got it Right!` : `Wrong or partial credit.`} +${gradedScore}`
+    document.getElementById("feedback").innerText = `${correct ? `You Got it Right!` : `Wrong or partial credit.`} +${gradedScore}`
 
     document.getElementById("submit-answer-btn").style.display = "none";
     document.getElementById("next-question-btn").style.display = "block";

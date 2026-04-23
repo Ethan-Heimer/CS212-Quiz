@@ -1,0 +1,51 @@
+{
+    "header":{
+        "title": "Volcanos",
+        "description": "Test your knowledge on volcanos!",
+        "difficulty": "2",
+        "category": "Geology"
+    },
+
+    "questions":[
+        {
+            "Q":"What is a volcano?",
+            "A":[
+                "A rock",
+                "An opening in the Earth's crust where magma reaches the surface",
+                "A hole created by glaciers",
+                "A big wave"
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q":"What is magma called once it reaches the Earth's surface?",
+            "A":[
+                "Ash",
+                "Lava",
+                "Crystal",
+                "Sediment"
+            ],
+            "CorrectIndex": 1
+        },
+        {
+            "Q": "What type of volcano is broad with gentle slopes?",
+            "A": [
+                "Caldera",
+                "Composite volcano",
+                "Shield volcano",
+                "Cinder Cone"
+            ],
+            "CorrectIndex": 2
+        },
+        {
+            "Q": "What material is NOT typically erupted from a volcano?",
+            "A": [
+                "Lava",
+                "Gases",
+                "Ash",
+                "Sandstone blocks"
+            ],
+            "CorrectIndex": 3
+        }
+    ]
+}
