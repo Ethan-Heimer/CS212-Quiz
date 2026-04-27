@@ -130,20 +130,36 @@ were the following:
 Website pages are found at `pages/`. Each page is its own folder that contains an `index.html` file.
 Its very important that a pages HTML file is named `index.html` as github pages expect pages to be named this
 to render. 
-You can access a page by typing 'pages/{folder name}' after this project's github pages URL.
 
-### Libraries
+Each page also has a `.css` file and `.js` file to make the page look nice and work correctly.
+
+### 2.1.1 Page Redirection
+Due to the fact that we wanted this project to work on github pages, and also on localhost,
+redirecting the user to a different page is not as simple as setting calling `window.location.href`.
+To correctly redirect the user, we check to see if the current domain is *github.com*, or if its 
+somthing else. If we are on *github.com*, we mutate the URL in a way that will correctly redirect 
+the user *(add CS212-Quiz after the domain but before where we actually want to redirect the user)*.
+
+This is the actual code used:
+
+```js
+let isGitHub = window.location.hostname.includes("github");
+window.location.href=`${isGitHub ? "/CS212-Quiz" : ""}${location}/index.html?quizdata=${quizFileName}`
+```
+
+## 2.2 Libraries
 Libraries used for this project are found at `libs/`. Current Libraries: 
 - `libquizjson.js` - A library developed for this project to help handle JSON data for quizzes.
+- `libscore.js` - A library developed for this project used to help handle Score data for the quizzes. 
 
-### Assets
+### 2.2.1 libquizjson.js
+
+## 2.3 Assets
 Assets for the webpage are found at `assets/`. Data for quizzes are found at `assets/quizzes`. 
 'libquizjson.js' expects to find quiz data here.
 
-## libquizjson
-Documentation on how to use this library can be found [here](https://github.com/Ethan-Heimer/CS212-Quiz/blob/master/lib/libquizjson.js)
 
-## How to add a quiz
+## 2.4 How to add a quiz
 ### HTML
 libquizjson defines a custon HTML tag called '<quiz-card>'. This is used to define a quiz card using a corrisponding json file.
 You define the json file a quiz should use using it's `json` property.
@@ -171,27 +187,6 @@ CreateQuizCardElements("", (fileName, jsonBody) => {
 })
 ```
 
-### Assets - Quiz Json File
-The data for quizzes are stored in `.json` files. These are found in [assets/quizzes](https://github.com/Ethan-Heimer/CS212-Quiz/tree/master/assets/quizzes).
-currenly, the `.json` file for a quiz looks like:
-
-```JSON
-{
-    "description": "This is the second example of a quiz",
-    "difficulty": "★★★"
-}
-```
-
-*IMPORTANT:* The name of the quiz'a JSON file is the title of the quiz! Use '_' in the quizzes data file's name to represent spaces.
-To get the title of the quiz, a 'title' field is *AUTOMATICALLY* added to the quiz's json data when `libquizjson` generates 
-quiz card.
-
-### Steps to add a new quiz
-1. Create (Or copy) a `.json` file for the quiz.
-2. Edit the `.json` file with the new quiz's data
-3. In the HTML file where you want the quiz's card to be displayed, add the tag: `<quiz-card json="{json file name}"></quiz-card>`
-
-As long as there's a JavaScript file that calls `CreateQuizCardElements`. A Card for the quiz will be created!
 
 ## Important HTML IDs
 | Id          | Description                                 |
