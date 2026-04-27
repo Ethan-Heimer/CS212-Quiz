@@ -45,7 +45,7 @@ are the following:
 - The list of possable **answers** - An array of strings where each string is a possable
 answer to the question. 
 
-Displaying a question on our webpage mean displaying these two components to the user. 
+Displaying a question on our webpage means displaying these two components to the user. 
 
 The purpose of the 'Quiz Taking' state is to display each of thoes questions one-by-one.
 When a question being displayed, the user can select 0 - *n* answers, 
@@ -67,9 +67,50 @@ was being taken.
 
 While the user is in this *Quiz-Taking* state, a timer is being incremented that represents 
 how long the user has been taking a quiz. While this doesn't contribute to the final score of a quiz,
-it is an important part to how the user may *review* a quiz.
+it is an important part to how the user may *review* a quiz. The user's final time is the
+state of the timer when the quiz taking page's *Review-State* is reached. 
 
-## Home page 
+## 1.3 Achieving our goals - ***Reviewed***
+'Reviewing' can mean different things to different projects and users. We've 
+defined reviewing as:
+
+*"The ability to see, compare, and understand past quiz performance"*
+
+Giving the user the ability to compare and *review* past quiz performance gives
+the user the ability to learn and improve through our website. The following data is
+stored about a quiz so that the user may *review* their performance and improve later:
+
+- The name of the quiz
+- The user's score after taking the quiz
+- The user's final time after taking the quiz
+
+There's two sections on the webpage where the user can review past quiz data, both 
+serve different purposes. 
+
+ 1. The user can look at every quiz they've taken, as well as their final score and time 
+    on the home page. 
+ 2. After the user is done taking a quiz and in the quiz taking page's *Review* state, 
+    the past scores and final times are displayed. 
+
+Number 1 allows the user to review their perfomance across every quiz taken, while
+Number 2 allows the user to review their performance across a single quiz. In both cases, 
+the past quiz information is stored in a table. The quiz's *name*, *final score*, *percent
+(final score/max score)*, and *final time* are displayed in this table. 
+
+As mentioned before the 'quiz-taking` page contains two states, the *Quiz-Taking* state
+and the *Review* state. While in the review state, the following occur:
+
+- No questions are displayed
+- The user's final score and final time is displayed
+- The table of past quiz performance for this quiz only is displayed
+
+The user only has 2 options to properly get out of this *Review* state:
+
+- Retake the current quiz
+- Go back to the home page
+
+The purpose of all of the systems above is to encourage the user to *review* their past 
+performance and incrementaly improve their knowledge using our quizzes.
 
 ## Project Map
 ### Pages
