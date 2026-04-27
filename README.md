@@ -152,7 +152,22 @@ Libraries used for this project are found at `libs/`. Current Libraries:
 - `libquizjson.js` - A library developed for this project to help handle JSON data for quizzes.
 - `libscore.js` - A library developed for this project used to help handle Score data for the quizzes. 
 
+Both pages (home page and quiz taking page) use these libraries to make the website function.
+The code in these files we're shared across the two pages, thus becoming libraries.
+
 ### 2.2.1 libquizjson.js
+
+`libquizjson.js` defines the following functions to aid in loading and reading data
+for JSON files off of the front end of out webpage. 
+
+| Function                                   | Description |
+| ------------------------------------------ | ----------- |
+| `CreateQuizCardElements(filter, callback)` | finds all 'quiz-card' elements and runs the callback function for each of them. the callback is expected to return a string, that represents the child HTML for the quiz-card |
+| `CreateQuizCardElement(filterTokens, quizElement, fileName, callback)` | Gets the json object from a file and executes the callback function to build the quizElement's HTML body |
+| `RedirectToQuiz(location, quizFileName)`   | redirects the webpage to 'location', adds the 'quizFileName' to the URL as a search param (url variable) |
+| `GetJsonFromURL()`                         | Gets the json object from the file stored in the webpage URL | 
+| `GetQuizFileFromURL()`                     | reads the current URL and returns the json file name that's stored in the URL |
+| `GetJsonFromFile(fileName)`                | Gets the json object from the a file | 
 
 ## 2.3 Assets
 Assets for the webpage are found at `assets/`. Data for quizzes are found at `assets/quizzes`. 
