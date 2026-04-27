@@ -112,8 +112,21 @@ The user only has 2 options to properly get out of this *Review* state:
 The purpose of all of the systems above is to encourage the user to *review* their past 
 performance and incrementaly improve their knowledge using our quizzes.
 
-## Project Map
-### Pages
+## 2.0 Technical Details & Design
+The following aims to describe how we've implemented our systems. There's many quirks
+to how we've implemented different systems in this web app. These quirks were formed out 
+of the challenged we've faced while developing this web app. The main challenges we've faced
+were the following:
+
+| Challange                                                              | Solution                                                                                                       |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| A challenge faced was how JSON files were going to be read and parsed. | JSON data is stored in a separate folder in the GitHub repository, and is read using the JavaScript fetch api. |
+| As a backend server is not being used to deliver JSON files to the website, there is no way to fetch all possible JSON files from a server to then simply automatically display all quizzes into the page. | A custom HTML element was created named ‘quiz-card’ that has a property named ‘json’ used to store a JSON file corresponding to a quiz. JavaScript is used to read this property and display the correct quiz in a card format. |
+| Creating the CSS for the application was a challenge as we wanted a modern and clean look to the webpage. Choosing the color scheme to represent the application was a challenge as well | e went through plenty of revisions and versions of the CSS until we found a style we liked best. With each revision, we found something that we thought should be changed and integrated on it. |
+| Not only did redirecting to a different page have to work while running a web server on localhost, but it had to work on github pages as well. | Everytime the webpage needs to be redirected, we have to check whether the page is being accessed from github servers, or on localhost. To do this, we use the following code to check if we are visiting the webpage on github, and if so, make the proper changes to the URL to properly redirect a new page. |
+| With the score being stored in the URL, It can be easily read and tempered with. This is not something we want the user to be able to change easily, we had to come up with a way to mask the score in the URL. | The masking algorithm we implemented takes a number like ‘3’, and turns it into a semi-random output like this: ‘UYT[[TVV-AHIEIE’. There's two numbers stored in this value, the first (before the -) is the score, the second (after the -) is a specific key number to decode the score. The original score is multiplied by both 3307 and 7919 to make it appear longer than just a single digit. Then the score is converted into ASCII, and shifted by a random value between 16 and 64. That random value is then taken, multiplied by 5417, ascii shifted by 16 and appended to the end of the decoded score value. |
+
+## 2.1 Pages
 Website pages are found at `pages/`. Each page is its own folder that contains an `index.html` file.
 Its very important that a pages HTML file is named `index.html` as github pages expect pages to be named this
 to render. 
